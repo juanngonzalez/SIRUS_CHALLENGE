@@ -1,2 +1,2 @@
-# SIRUS_CHALLENGE
+# SURIS_CHALLENGE
 Challenge tecnico Sirus Code Software Factory
