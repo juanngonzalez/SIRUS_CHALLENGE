@@ -51,12 +51,26 @@ const ArticleTableContainer = () => {
     setSelectedArticles(updatedSelected);
   };
 
-  const handleSave = () => {
-    // Lógica para guardar el pedido
-    console.log('Pedido a guardar:', {
-      seller: selectedSeller,
-      articles: selectedArticles
-    });
+  const handleSave = (values) => {
+    // Preparar los datos que vas a enviar
+    console.log(values)
+    const pedido = {
+      vendedor: sellers.find(e => e.id == values.seller),
+      articulos: values.articles,
+    };
+  
+    axiosInstance
+      .post('/ventas', pedido)
+      .then((response) => {
+        // Manejar la respuesta exitosa
+        console.log('Venta guardada exitosamente:', response.data);
+        alert('Venta guardada con éxito!');
+      })
+      .catch((error) => {
+        // Manejar errores
+        const errorMessage = error.response?.data?.message || 'Ocurrió un error al guardar la venta.';
+        alert(errorMessage);
+      });
   };
 
   return (

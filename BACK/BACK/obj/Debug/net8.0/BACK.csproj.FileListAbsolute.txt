@@ -68,3 +68,5 @@ D:\Repositories\SIRUS_CHALLENGE\BACK\BACK\obj\Debug\net8.0\BACK.pdb
 D:\Repositories\SIRUS_CHALLENGE\BACK\BACK\obj\Debug\net8.0\BACK.genruntimeconfig.cache
 D:\Repositories\SIRUS_CHALLENGE\BACK\BACK\obj\Debug\net8.0\ref\BACK.dll
 D:\Repositories\SIRUS_CHALLENGE\BACK\BACK\bin\Debug\net8.0\Data\vendedores.json
+D:\Repositories\SIRUS_CHALLENGE\BACK\BACK\bin\Debug\net8.0\Data\ventas.json
+D:\Repositories\SIRUS_CHALLENGE\BACK\BACK\bin\Debug\net8.0\Newtonsoft.Json.dll

@@ -1,0 +1,29 @@
+[
+  {
+    "Id": 1,
+    "Vendedor": {
+      "Id": 4,
+      "Descripcion": "Alan Tellerio"
+    },
+    "Articulos": [
+      {
+        "Codigo": "F1026",
+        "Descripcion": "Almohada Seally",
+        "Precio": 0.0,
+        "Deposito": 1
+      },
+      {
+        "Codigo": "K1024",
+        "Descripcion": "Sommier Telgo",
+        "Precio": 14256.12,
+        "Deposito": 1
+      },
+      {
+        "Codigo": "K1020",
+        "Descripcion": "Colchon Telgo",
+        "Precio": 10256.12,
+        "Deposito": 1
+      }
+    ]
+  }
+]

@@ -53,6 +53,8 @@ builder.Services.Configure<VendedoresWrapper>(opt =>
 // Configurar los servicios
 builder.Services.AddSingleton<IArticulosService, ArticulosService>();
 builder.Services.AddSingleton<IVendedoresService, VendedoresService>();
+builder.Services.AddSingleton<IVentasService, VentasService>();
+
 
 
 var app = builder.Build();
