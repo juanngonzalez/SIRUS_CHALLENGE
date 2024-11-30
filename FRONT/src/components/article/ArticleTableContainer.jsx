@@ -3,6 +3,8 @@ import ArticleTable from './ArticleTable';
 import axiosInstance from '../../axios/axios.js';
 import { CircularProgress } from '@mui/material';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';  
+import 'react-toastify/dist/ReactToastify.css';  
 
 // Contenedor estilizado para centrar los elementos
 const Container = styled.div`
@@ -52,8 +54,6 @@ const ArticleTableContainer = () => {
   };
 
   const handleSave = (values) => {
-    // Preparar los datos que vas a enviar
-    console.log(values)
     const pedido = {
       vendedor: sellers.find(e => e.id == values.seller),
       articulos: values.articles,
@@ -63,13 +63,12 @@ const ArticleTableContainer = () => {
       .post('/ventas', pedido)
       .then((response) => {
         // Manejar la respuesta exitosa
-        console.log('Venta guardada exitosamente:', response.data);
-        alert('Venta guardada con éxito!');
+        toast.success('Venta guardada con éxito.');  
       })
       .catch((error) => {
         // Manejar errores
         const errorMessage = error.response?.data?.message || 'Ocurrió un error al guardar la venta.';
-        alert(errorMessage);
+        toast.error(errorMessage);  
       });
   };
 
@@ -77,7 +76,7 @@ const ArticleTableContainer = () => {
     <>
       {loading ? (
         <Container>
-            <CircularProgress />
+          <CircularProgress />
         </Container> 
       ) : (
         <ArticleTable
