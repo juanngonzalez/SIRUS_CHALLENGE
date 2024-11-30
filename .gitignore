@@ -1,0 +1,17 @@
+# Ignorar los archivos de Visual Studio
+.vs/
+*.user
+*.userosscache
+*.suo
+*.vssscc
+
+# Ignorar archivos de compilación
+/bin/
+/obj/
+
+# Ignorar carpetas de dependencias de Node.js
+/node_modules/
+
+# Ignorar archivos de configuración del sistema operativo
+.DS_Store   # macOS
+Thumbs.db   # Windows
