@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 1,
+    "Vendedor": {
+      "Id": 2,
+      "Descripcion": "Lucas Lauriente"
+    },
+    "Articulos": [
+      {
+        "Codigo": "K1022",
+        "Descripcion": "Colchon Seally",
+        "Precio": 18256.12,
+        "Deposito": 1
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Vendedor": {
+      "Id": 2,
+      "Descripcion": "Lucas Lauriente"
+    },
+    "Articulos": [
+      {
+        "Codigo": "K1020",
+        "Descripcion": "Colchon Telgo",
+        "Precio": 10256.12,
+        "Deposito": 1
+      },
+      {
+        "Codigo": "K1022",
+        "Descripcion": "Colchon Seally",
+        "Precio": 18256.12,
+        "Deposito": 1
+      }
+    ]
+  }
+]
