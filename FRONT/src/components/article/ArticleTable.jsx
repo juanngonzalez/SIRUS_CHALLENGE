@@ -21,7 +21,7 @@ import * as Yup from 'yup';
 // Estilo personalizado para el botón
 const StyledButton = styled.button`
   align-self: flex-end;
-  margin: 10px;
+  margin-top: 10px;  
   padding: 8px 16px;
   background-color: #1976d2;
   color: #fff;
@@ -29,7 +29,7 @@ const StyledButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-
+  
   &:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
@@ -37,6 +37,11 @@ const StyledButton = styled.button`
 
   &:hover:not(:disabled) {
     background-color: #1565c0;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    align-self: stretch;  
   }
 `;
 
@@ -52,6 +57,12 @@ const FooterContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
+  
+  // Cuando el tamaño es xs, poner todo en una sola columna y el botón a full width
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: stretch; // Asegura que el botón ocupe todo el ancho
+  }
 `;
 //Label personalizado
 const StyledLabel = styled.span`
@@ -60,6 +71,8 @@ const StyledLabel = styled.span`
   padding: 5px 10px;
   border-radius: 12px;
   display: inline-block;
+  width: fit-content;
+  margin: 5px;
 `;
 //Contenedor para el mensaje al no haber articulos
 const MessageContainer = styled.div`
@@ -106,7 +119,7 @@ const ArticleTable = ({
     >
       {({ setFieldValue, values, errors, touched }) => (
         <StyledContainer>
-          {/* Contenedor del combo con etiqueta */}
+
           <Form>
             <FormControl
               sx={{

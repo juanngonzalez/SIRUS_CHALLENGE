@@ -1,6 +1,8 @@
 ﻿using BACK.Interfaces;
 using BACK.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace BACK.Controllers
 {
@@ -26,14 +28,17 @@ namespace BACK.Controllers
             try
             {
                 var venta = await _ventasService.PostVenta(nuevaVenta);
-                return Ok(venta.Value.Id); 
 
+                return Ok(venta.Id); 
             }
             catch (InvalidOperationException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error interno del servidor.", error = ex.Message });
             }
         }
-
     }
 }

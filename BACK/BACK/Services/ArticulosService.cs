@@ -16,22 +16,29 @@ namespace BACK.Services
 
         public Task<IEnumerable<Articulo>> ObtenerTodosLosArticulosAsync()
         {
-            // Filtrar y validar los artículos
-            var articulosFiltrados = _articulos
+            try
+            {
+                // Filtrar y validar los artículos
+                var articulosFiltrados = _articulos
                 .Where(a => a.Deposito == 1 && a.Precio > 0) // Validar depósito y precio
                 .Select(a => new Articulo
                 {
-                    Codigo = a.Codigo,
-                    Descripcion = LimpiarDescripcion(a.Descripcion), // Limpiar caracteres especiales
+                    Codigo = LimpiarCaracteresEspeciales(a.Codigo), // Limpiar caracteres especiales
+                    Descripcion = LimpiarCaracteresEspeciales(a.Descripcion), // Limpiar caracteres especiales
                     Precio = a.Precio,
                     Deposito = a.Deposito
                 });
 
-            return Task.FromResult(articulosFiltrados.AsEnumerable());
+                return Task.FromResult(articulosFiltrados.AsEnumerable());
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Error al obtener los articulos.", ex);
+            }
         }
 
         // Método para eliminar caracteres especiales de la descripción
-        private string LimpiarDescripcion(string descripcion)
+        private string LimpiarCaracteresEspeciales(string descripcion)
         {
             if (string.IsNullOrWhiteSpace(descripcion))
                 return descripcion;

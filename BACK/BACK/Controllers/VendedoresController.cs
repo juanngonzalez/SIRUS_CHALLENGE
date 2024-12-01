@@ -1,6 +1,8 @@
 ﻿using BACK.Interfaces;
 using BACK.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace BACK.Controllers
 {
@@ -16,10 +18,22 @@ namespace BACK.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Articulo>>> ObtenerTodos()
+        public async Task<ActionResult<IEnumerable<Vendedor>>> ObtenerTodos()
         {
-            var vendedores = await _vendedoresService.ObtenerTodosLosVendedoresAsync();
-            return Ok(vendedores);
+            try
+            {
+                var vendedores = await _vendedoresService.ObtenerTodosLosVendedoresAsync();
+
+                return Ok(vendedores);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error interno del servidor.", error = ex.Message });
+            }
         }
     }
 }

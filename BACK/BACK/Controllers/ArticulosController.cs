@@ -18,8 +18,19 @@ namespace BACK.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Articulo>>> ObtenerTodos()
         {
-            var articulos = await _articuloService.ObtenerTodosLosArticulosAsync();
-            return Ok(articulos);
+            try
+            {
+                var articulos = await _articuloService.ObtenerTodosLosArticulosAsync();
+                return Ok(articulos);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error interno del servidor.", error = ex.Message });
+            }
         }
     }
 }

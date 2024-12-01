@@ -2,10 +2,10 @@
 using BACK.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using System.Xml;
 
 namespace BACK.Services
 {
@@ -24,7 +24,7 @@ namespace BACK.Services
             }
         }
 
-        public async Task<ActionResult<Venta>> PostVenta(Venta nuevaVenta)
+        public async Task<Venta> PostVenta(Venta nuevaVenta)
         {
             try
             {
@@ -40,13 +40,12 @@ namespace BACK.Services
                 // Guardar las ventas actualizadas.
                 await File.WriteAllTextAsync(_filePath, JsonConvert.SerializeObject(ventas, Newtonsoft.Json.Formatting.Indented));
 
-                return nuevaVenta;
+                return nuevaVenta; 
             }
-            catch
+            catch (Exception ex)
             {
-                return new BadRequestResult();
+                throw new InvalidOperationException("Error al procesar la venta.", ex);
             }
         }
     }
 }
-
