@@ -113,7 +113,6 @@ const ArticleTable = ({
       }}
       validationSchema={validationSchema}
       onSubmit={(values) => {
-        console.log(values);
         handleSave(values);
       }}
     >
